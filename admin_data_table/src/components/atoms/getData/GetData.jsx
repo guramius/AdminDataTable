@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import DeleteButton from '../deleteButton/DeleteButton';
 
 const GetData = () => {
     const [data, setData] =useState([])
@@ -14,6 +15,15 @@ const GetData = () => {
         }
         axiosData();
     }, [])
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+            setData(filterData => filterData.filter(item => item.id !== id));
+        } catch (error) {
+            console.error('Error deleting data:', error);
+        }
+    };
   return (
     <div>
         {
@@ -22,12 +32,10 @@ const GetData = () => {
                     <>  
                         <div style={{display:'flex', gap:'20px'}}>
                            <p key={item.id}>{item.name}</p>
-                        
                             <p>{item.email}</p>
                             <p>{item.address.city}</p>
                             <p>{item.address.zipcode}</p>
-                            <button>delete</button>
-                            <p>{console.log(item)}</p> 
+                            <DeleteButton onDelete={() => handleDelete(item.id)}  />
                         </div>
                         
                     </>

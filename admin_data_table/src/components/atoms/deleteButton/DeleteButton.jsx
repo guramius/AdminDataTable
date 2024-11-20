@@ -1,7 +1,7 @@
 
-const DeleteButton = () => {
+const DeleteButton = ({ onDelete }) => {
   return (
-    <button>DeleteButton</button>
+    <button onClick={onDelete}>Delete</button>
   )
 }
 

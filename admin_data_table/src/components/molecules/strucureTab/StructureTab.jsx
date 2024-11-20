@@ -1,4 +1,3 @@
-import DeleteButton from "../../atoms/deleteButton/DeleteButton"
 import GetData from "../../atoms/getData/GetData"
 import UserData from "../../atoms/userData/UserData"
 
@@ -7,7 +6,6 @@ const StructureTab = () => {
         <>
             <GetData />
             <UserData/>
-            <DeleteButton />
         </>
     )
 }

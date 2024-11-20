@@ -8,7 +8,7 @@ const UserData = () => {
         const axiosUsers = async () => {
             try {
                 const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
-                setUserData(response.data); // Fixed: Access the correct property
+                setUserData(response.data); 
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -20,7 +20,9 @@ const UserData = () => {
         <div>
             {userData.map(item => (
                 <div key={item.id}>
-                    <p>{item.completed ? 'Completed' : 'Not Completed'}</p>
+                    <p style={{ color: item.completed ? 'green' : 'red' }}>
+                        {item.completed ? 'Completed' : 'Not Completed'}
+                    </p>
                 </div>
             ))}
         </div>
